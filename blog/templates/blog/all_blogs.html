@@ -1,0 +1,33 @@
+{% extends "portfolio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>My Blogs</h1>
+
+<marquee><h3 class="text-center mb-5">Ifeoma has written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h3></marquee>
+
+
+
+<div class="row">
+  {% for blog in blogs %}
+  <div class="col-lg-4 col-md-4">
+
+    {% if blog.url %}
+    <a href="{{ blog.url }}">
+        <img src= "{{ blog.image.url }} " class="img-fluid mb-2">
+    </a>
+
+    {% else %}
+
+    <img src="{{ blog.image.url }}" class="img-fluid mb-2">
+    {% endif %}
+    <h3><b>{{ blog.title }}:</b></h3> {{ blog.description }}
+
+
+   </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
